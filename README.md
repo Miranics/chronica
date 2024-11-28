@@ -1,2 +1,2 @@
 # chronica
-A simple web application to explore historical events by date.
+A simple web application to explore historical events by date
