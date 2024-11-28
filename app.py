@@ -19,7 +19,7 @@ def home():
 def search():
     """
     Fetch historical events based on the user's input date.
-    Simplifies the API response to include only the year, text, and a single link.
+    Prioritizes recent events and limits results to 'major' occurrences.
     """
     # Extract the 'date' parameter from the query string
     date = request.args.get('date')
@@ -41,7 +41,7 @@ def search():
             data = response.json()  # Parse the API response
             raw_events = data.get('data', {}).get('Events', [])  # Extract raw events
             
-            # Simplify the events for cleaner output
+            # Simplify and prioritize events
             simplified_events = []
             for event in raw_events:
                 # Extract relevant fields: year, plain text, and a single link
@@ -54,15 +54,25 @@ def search():
                 
                 # Append only the clean and structured data
                 simplified_events.append({
-                    'year': year,
+                    'year': int(year) if year.isdigit() else 0,  # Convert year to integer for sorting
                     'description': text,
                     'link': primary_link
                 })
 
-            # Limit the number of events returned to avoid clutter
-            limited_events = simplified_events[:5]  # Show only the top 5 events
+            # Filter and sort events
+            filtered_events = [
+                event for event in simplified_events if event['year'] >= 1900  # Include only modern events
+            ]
+            sorted_events = sorted(filtered_events, key=lambda e: e['year'], reverse=True)  # Sort by year (desc)
 
-            # Return the cleaned-up and limited events as JSON
+            # If no modern events exist, fall back to older events
+            if not sorted_events:
+                sorted_events = sorted(simplified_events, key=lambda e: e['year'], reverse=True)
+
+            # Limit the number of events returned
+            limited_events = sorted_events[:5]  # Show only the top 5 events
+
+            # Return the cleaned-up and prioritized events as JSON
             return jsonify({'date': date, 'events': limited_events}), 200
         else:
             # Return an error if the API call fails
@@ -73,4 +83,4 @@ def search():
 
 # Run the application locally
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    app.run(debug=True, host='127.0.0.1', port=8000)
