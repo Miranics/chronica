@@ -19,7 +19,7 @@ def home():
 def search():
     """
     Fetch historical events based on the user's input date.
-    Prioritizes recent events and limits results to 'major' occurrences.
+    Prioritizes recent events while ensuring major historical events are included.
     """
     # Extract the 'date' parameter from the query string
     date = request.args.get('date')
@@ -59,15 +59,18 @@ def search():
                     'link': primary_link
                 })
 
-            # Filter and sort events
-            filtered_events = [
-                event for event in simplified_events if event['year'] >= 1900  # Include only modern events
-            ]
-            sorted_events = sorted(filtered_events, key=lambda e: e['year'], reverse=True)  # Sort by year (desc)
+            # Keywords to prioritize "major" events
+            keywords = ["moon", "Apollo", "discovery", "independence", "treaty", "revolution"]
 
-            # If no modern events exist, fall back to older events
-            if not sorted_events:
-                sorted_events = sorted(simplified_events, key=lambda e: e['year'], reverse=True)
+            # Sort by relevance (keywords first), then by year (descending)
+            sorted_events = sorted(
+                simplified_events,
+                key=lambda e: (
+                    any(keyword.lower() in e['description'].lower() for keyword in keywords),  # Prioritize keyword matches
+                    e['year']
+                ),
+                reverse=True  # Sort descending
+            )
 
             # Limit the number of events returned
             limited_events = sorted_events[:5]  # Show only the top 5 events
