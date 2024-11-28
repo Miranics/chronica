@@ -18,8 +18,8 @@ def home():
 @app.route('/search', methods=['GET'])
 def search():
     """
-    Route to fetch historical events based on the user's input date.
-    Accepts a 'date' query parameter in YYYY-MM-DD format.
+    Fetch historical events based on the user's input date.
+    Simplifies the API response to include only the year, text, and a single link.
     """
     # Extract the 'date' parameter from the query string
     date = request.args.get('date')
@@ -39,8 +39,31 @@ def search():
         # Check if the API call is successful
         if response.status_code == 200:
             data = response.json()  # Parse the API response
-            events = data.get('data', {}).get('Events', [])  # Extract events
-            return jsonify({'date': date, 'events': events}), 200
+            raw_events = data.get('data', {}).get('Events', [])  # Extract raw events
+            
+            # Simplify the events for cleaner output
+            simplified_events = []
+            for event in raw_events:
+                # Extract relevant fields: year, plain text, and a single link
+                year = event.get('year', 'Unknown Year')
+                text = event.get('text', 'No description available.')
+                links = event.get('links', [])
+                
+                # Pick only the first link if available
+                primary_link = links[0]['link'] if links else None
+                
+                # Append only the clean and structured data
+                simplified_events.append({
+                    'year': year,
+                    'description': text,
+                    'link': primary_link
+                })
+
+            # Limit the number of events returned to avoid clutter
+            limited_events = simplified_events[:5]  # Show only the top 5 events
+
+            # Return the cleaned-up and limited events as JSON
+            return jsonify({'date': date, 'events': limited_events}), 200
         else:
             # Return an error if the API call fails
             return jsonify({'error': 'Failed to fetch data from the API.'}), 500
