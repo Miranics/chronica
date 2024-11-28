@@ -1,6 +1,6 @@
 # Import necessary libraries
 from flask import Flask, request, jsonify  # Flask for the web server
-import requests  # To fetch data from the external API
+import requests  # To fetch data from external APIs
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -19,7 +19,7 @@ def home():
 def search():
     """
     Fetch historical events based on the user's input date.
-    Prioritizes recent events while ensuring major historical events are included.
+    Combines data from History Today API and Wikipedia API for better coverage.
     """
     # Extract the 'date' parameter from the query string
     date = request.args.get('date')
@@ -33,53 +33,72 @@ def search():
         month, day = date.split('-')[1], date.split('-')[2]
 
         # Use the History Today API to fetch events
-        api_url = f"https://history.muffinlabs.com/date/{month}/{day}"
-        response = requests.get(api_url)
+        history_today_url = f"https://history.muffinlabs.com/date/{month}/{day}"
+        history_today_response = requests.get(history_today_url)
+        history_today_events = []
 
-        # Check if the API call is successful
-        if response.status_code == 200:
-            data = response.json()  # Parse the API response
-            raw_events = data.get('data', {}).get('Events', [])  # Extract raw events
+        # Check if the History Today API call is successful
+        if history_today_response.status_code == 200:
+            history_today_data = history_today_response.json()
+            raw_events = history_today_data.get('data', {}).get('Events', [])
             
-            # Simplify and prioritize events
-            simplified_events = []
+            # Simplify the events from History Today API
             for event in raw_events:
-                # Extract relevant fields: year, plain text, and a single link
                 year = event.get('year', 'Unknown Year')
                 text = event.get('text', 'No description available.')
                 links = event.get('links', [])
-                
-                # Pick only the first link if available
                 primary_link = links[0]['link'] if links else None
                 
-                # Append only the clean and structured data
-                simplified_events.append({
-                    'year': int(year) if year.isdigit() else 0,  # Convert year to integer for sorting
+                history_today_events.append({
+                    'year': int(year) if year.isdigit() else 0,
                     'description': text,
                     'link': primary_link
                 })
 
-            # Keywords to prioritize "major" events
-            keywords = ["moon", "Apollo", "discovery", "independence", "treaty", "revolution"]
+        # Use Wikipedia's API to fetch additional events
+        wikipedia_url = f"https://en.wikipedia.org/w/api.php"
+        wikipedia_params = {
+            'action': 'parse',
+            'page': f"{month} {day}",
+            'prop': 'text',
+            'format': 'json',
+            'formatversion': 2
+        }
+        wikipedia_response = requests.get(wikipedia_url, params=wikipedia_params)
+        wikipedia_events = []
 
-            # Sort by relevance (keywords first), then by year (descending)
-            sorted_events = sorted(
-                simplified_events,
-                key=lambda e: (
-                    any(keyword.lower() in e['description'].lower() for keyword in keywords),  # Prioritize keyword matches
-                    e['year']
-                ),
-                reverse=True  # Sort descending
-            )
+        # Check if the Wikipedia API call is successful
+        if wikipedia_response.status_code == 200:
+            wikipedia_data = wikipedia_response.json()
+            html_content = wikipedia_data.get('parse', {}).get('text', '')
 
-            # Limit the number of events returned
-            limited_events = sorted_events[:5]  # Show only the top 5 events
+            # Extract events from the "Events" section in the HTML content
+            if 'Events' in html_content:
+                import re
+                events_section = re.search(r'(?<=<span class="mw-headline" id="Events">Events</span>)(.*?)<h2>', html_content, re.S)
+                if events_section:
+                    events_list = re.findall(r'<li>(.*?)</li>', events_section.group(1))
+                    for event in events_list:
+                        # Extract year and description from each event
+                        year_match = re.match(r'(\d{1,4}) – (.*)', event)
+                        if year_match:
+                            year = year_match.group(1)
+                            description = re.sub(r'<.*?>', '', year_match.group(2))  # Strip HTML tags
+                            wikipedia_events.append({
+                                'year': int(year),
+                                'description': description,
+                                'link': None  # Links can be parsed later if needed
+                            })
 
-            # Return the cleaned-up and prioritized events as JSON
-            return jsonify({'date': date, 'events': limited_events}), 200
-        else:
-            # Return an error if the API call fails
-            return jsonify({'error': 'Failed to fetch data from the API.'}), 500
+        # Combine events from both sources and sort by year (descending)
+        combined_events = history_today_events + wikipedia_events
+        sorted_events = sorted(combined_events, key=lambda e: e['year'], reverse=True)
+
+        # Limit the number of events returned
+        limited_events = sorted_events[:5]
+
+        # Return the combined and sorted events as JSON
+        return jsonify({'date': date, 'events': limited_events}), 200
     except Exception as e:
         # Handle unexpected errors gracefully
         return jsonify({'error': f"An unexpected error occurred: {str(e)}"}), 500
