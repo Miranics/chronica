@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronica - Explore Historical Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to Chronica</h1>
+            <p>Explore significant historical events by date.</p>
+        </header>
+
+        <section id="search">
+            <h2>Search for Historical Events</h2>
+            <form id="searchForm">
+                <label for="date">Enter a date (YYYY-MM-DD):</label>
+                <input type="text" id="date" name="date" placeholder="e.g., 1969-07-20" required>
+                <button type="submit">Search</button>
+            </form>
+
+            <div id="eventsContainer">
+                <!-- Results will be displayed here -->
+            </div>
+        </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Handle form submission
+        $('#searchForm').submit(function(event) {
+            event.preventDefault();  // Prevent the form from submitting normally
+            const date = $('#date').val();
+            fetch(`/search?date=${date}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        $('#eventsContainer').html(`<p class="error">${data.error}</p>`);
+                    } else {
+                        const events = data.events.map(event => {
+                            return `<div class="event">
+                                        <h3>${event.year}</h3>
+                                        <p>${event.description}</p>
+                                        <a href="${event.link}" target="_blank">Learn More</a>
+                                    </div>`;
+                        }).join('');
+                        $('#eventsContainer').html(events);
+                    }
+                })
+                .catch(error => {
+                    $('#eventsContainer').html('<p class="error">There was an error fetching the events.</p>');
+                });
+        });
+    </script>
+</body>
+</html>
