@@ -3,56 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronica - Explore Historical Events</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Chronica - Historical Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Welcome to Chronica</h1>
-            <p>Explore significant historical events by date.</p>
-        </header>
+    <header>
+        <div class="container">
+            <h1>Chronica</h1>
+            <p>Explore Historical Events by Date</p>
+        </div>
+    </header>
 
-        <section id="search">
-            <h2>Search for Historical Events</h2>
-            <form id="searchForm">
-                <label for="date">Enter a date (YYYY-MM-DD):</label>
-                <input type="text" id="date" name="date" placeholder="e.g., 1969-07-20" required>
+    <main>
+        <div class="hero">
+            <img src="https://via.placeholder.com/1920x600" alt="Historical Banner">
+        </div>
+        <section class="about">
+            <h2>Welcome to Chronica</h2>
+            <p>
+                Discover the most significant events in history by selecting a specific date. 
+                Chronica combines data from various sources to provide you with a curated list of historical highlights.
+            </p>
+        </section>
+        <section class="search">
+            <h2>Search for Events</h2>
+            <form id="search-form">
+                <input type="date" id="date" name="date" required>
                 <button type="submit">Search</button>
             </form>
-
-            <div id="eventsContainer">
-                <!-- Results will be displayed here -->
-            </div>
         </section>
-    </div>
+        <section id="results">
+            <h2>Results</h2>
+            <ul id="events-list"></ul>
+        </section>
+    </main>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        // Handle form submission
-        $('#searchForm').submit(function(event) {
-            event.preventDefault();  // Prevent the form from submitting normally
-            const date = $('#date').val();
-            fetch(`/search?date=${date}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        $('#eventsContainer').html(`<p class="error">${data.error}</p>`);
-                    } else {
-                        const events = data.events.map(event => {
-                            return `<div class="event">
-                                        <h3>${event.year}</h3>
-                                        <p>${event.description}</p>
-                                        <a href="${event.link}" target="_blank">Learn More</a>
-                                    </div>`;
-                        }).join('');
-                        $('#eventsContainer').html(events);
-                    }
-                })
-                .catch(error => {
-                    $('#eventsContainer').html('<p class="error">There was an error fetching the events.</p>');
-                });
-        });
-    </script>
+    <footer>
+        <p>© 2024 Chronica. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
