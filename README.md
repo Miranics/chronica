@@ -1,132 +1,81 @@
-Chronica - Explore Historical Events by Date
-Chronica is a Flask-powered web application that allows users to explore historical events based on specific dates. Whether you're looking for major milestones or curious about what happened on your birthday, Chronica offers a user-friendly interface with robust search functionality.
-
+Chronica
+Chronica is a dynamic Flask-based web application designed to let users explore major historical events by date. It combines data from the History Today API with curated events to deliver a seamless and enriching experience.
 
 Features
-Search Historical Events: Fetches historical data from the History Today API for any given date.
-Supplementary Events: Includes hardcoded historical highlights (e.g., Apollo 11 Moon Landing).
-Smart Event Ranking: Events are ranked by year and keyword relevance for an engaging user experience.
-Interactive Frontend: Designed with responsive and appealing styles for enhanced usability.
+Interactive Interface: A visually appealing and responsive design ensures great user experience across devices.
+Search Historical Events: Enter a date (in YYYY-MM-DD format) to explore events that occurred on that day.
+API Integration: Fetches data from the History Today API, enriched with major curated events.
+Sorting and Prioritization: Events are prioritized by relevance, using custom keyword-based sorting.
+User-Friendly Navigation: Clear instructions and a welcoming layout make it easy to use.
 Technologies Used
 Backend
-Python (Flask): To handle routing, API integration, and business logic.
-Requests Library: To interact with external APIs.
+Python: Core backend logic.
+Flask: Lightweight web framework for server-side functionality.
+Requests: For API interaction with the History Today API.
 Frontend
-HTML5 & CSS3: For structuring and styling the web application.
-JavaScript: To enhance interactivity and dynamic behaviors.
-Responsive Design: Ensures accessibility on various devices.
-How to Use
-Visit the Homepage
-Start by navigating to the homepage to explore what Chronica has to offer.
-URL: http://your-domain-or-localhost:8000/
-
-Search by Date
-Enter a specific date (e.g., YYYY-MM-DD) in the search box to discover events from that day in history.
-
-View Results
-Results will be displayed in chronological order, highlighting significant milestones.
-
-Navigate and Interact
-Use the intuitive interface to explore further details or click on links for in-depth information.
-
-Installation and Setup
-Follow these steps to set up Chronica on your local machine:
-
+HTML5 & CSS3: Structure and styling.
+JavaScript: Adds interactivity (e.g., dynamic date validation, event filtering).
+Bootstrap: Ensures responsive and mobile-first design.
+APIs
+History Today API: Supplies historical events data, enriched with curated events.
+Installation
 Prerequisites
-Python 3.8+
+Python (3.7 or later)
 Flask
-Requests Library
-Installation Steps
-Clone the Repository
+A modern web browser
+Steps
+Clone the repository:
 
 bash
 Copy code
 git clone https://github.com/your-username/chronica.git
-cd chronica
-Set Up a Virtual Environment
+Navigate to the project directory:
 
 bash
 Copy code
-python -m venv venv
-source venv/bin/activate   # For Linux/Mac
-venv\Scripts\activate      # For Windows
-Install Required Packages
+cd chronica
+Install the dependencies:
 
 bash
 Copy code
 pip install -r requirements.txt
-Run the Application
+Start the Flask application:
 
 bash
 Copy code
-flask run --host=127.0.0.1 --port=8000
-Access Chronica Visit http://127.0.0.1:8000/ in your browser.
+flask run
+Open your browser and visit:
+http://127.0.0.1:8000
 
-File Structure
-Here’s the project’s directory structure:
-
-graphql
+Project Structure
+plaintext
 Copy code
-chronica/
+Chronica/
 ├── static/
 │   ├── css/
-│   │   └── style.css  # Styles for the application
+│   │   └── styles.css      # Custom CSS for styling
 │   ├── js/
-│   │   └── script.js  # Dynamic JavaScript
+│   │   └── script.js       # JavaScript for interactivity
 │   └── images/
-│       └── banner.png  # Hero image for the homepage
+│       └── banner.png      # Homepage banner image
+│
 ├── templates/
-│   ├── base.html      # HTML template for layout
-│   ├── home.html      # Homepage
-│   └── search.html    # Search results page
-├── app.py             # Flask application logic
-├── requirements.txt   # Python dependencies
-└── README.md          # Project documentation
-API Integration
-Chronica uses the History Today API to fetch event data.
-API URL: https://history.muffinlabs.com/date/{month}/{day}
-
-Fallback Events
-In cases where the API does not return significant results, Chronica includes supplementary hardcoded events for key historical moments.
-
-Screenshots
-Homepage
-
-Search Results
-
-Future Enhancements
-User Authentication: Allow users to save and bookmark favorite events.
-Advanced Filters: Search by specific keywords or event types.
-Multiple APIs: Integrate additional APIs for richer historical data.
-Contributing
-Contributions are welcome! Follow these steps to contribute:
-
-Fork the repository.
-Create a new branch for your feature:
-bash
-Copy code
-git checkout -b feature-name
-Commit your changes:
-bash
-Copy code
-git commit -m "Add feature-name"
-Push to your branch:
-bash
-Copy code
-git push origin feature-name
-Open a pull request.
-License
-This project is licensed under the Eclipse Public License - v 2.0. See the LICENSE file for more details.
-
-Contact
-For questions or feedback, feel free to reach out:
-
-Author: Nanen Miracle Mbanaade
-Email: 002nasya@gmail.com
-GitHub: Miranics
-Project Repository: Chronica
+│   ├── index.html          # Homepage template
+│   ├── results.html        # Template for search results
+│   └── error.html          # Template for error messages
+│
+├── app.py                  # Flask application logic
+├── requirements.txt        # Python dependencies
+└── README.md               # Project documentation
 Acknowledgments
-History Today API for providing historical event data.
-Open-source libraries and frameworks that made this project possible.
+This project was made possible thanks to the following tools and resources:
 
-           Thank you for your interest in Chronica!
+Flask: For powering the server-side logic.
+Bootstrap: For ensuring responsive and modern design.
+History Today API: For providing a rich dataset of historical events.
+Requests Library: For seamless API interaction.
+Unsplash: For providing captivating images for banners and visuals.
+Contact
+For questions, suggestions, or issues, feel free to reach out:
+
+Email: 002nasyagmail.com
