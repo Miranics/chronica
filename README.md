@@ -1,81 +1,32 @@
-Chronica
-Chronica is a dynamic Flask-based web application designed to let users explore major historical events by date. It combines data from the History Today API with curated events to deliver a seamless and enriching experience.
+# Chronica
 
-Features
-Interactive Interface: A visually appealing and responsive design ensures great user experience across devices.
-Search Historical Events: Enter a date (in YYYY-MM-DD format) to explore events that occurred on that day.
-API Integration: Fetches data from the History Today API, enriched with major curated events.
-Sorting and Prioritization: Events are prioritized by relevance, using custom keyword-based sorting.
-User-Friendly Navigation: Clear instructions and a welcoming layout make it easy to use.
-Technologies Used
-Backend
-Python: Core backend logic.
-Flask: Lightweight web framework for server-side functionality.
-Requests: For API interaction with the History Today API.
-Frontend
-HTML5 & CSS3: Structure and styling.
-JavaScript: Adds interactivity (e.g., dynamic date validation, event filtering).
-Bootstrap: Ensures responsive and mobile-first design.
-APIs
-History Today API: Supplies historical events data, enriched with curated events.
-Installation
-Prerequisites
-Python (3.7 or later)
-Flask
-A modern web browser
-Steps
-Clone the repository:
+**Chronica** is a user-friendly web application powered by Flask that lets users explore significant historical events based on specific dates. It fetches data from the **History Today API** and supplements it with additional curated events for a comprehensive experience.
 
-bash
-Copy code
-git clone https://github.com/your-username/chronica.git
-Navigate to the project directory:
+---
 
-bash
-Copy code
-cd chronica
-Install the dependencies:
+## Features
 
-bash
-Copy code
-pip install -r requirements.txt
-Start the Flask application:
+- **Search for Historical Events**: Input a date to view important events from history that occurred on that day.
+- **API Integration**: Retrieves event data from the History Today API.
+- **Enriched Data**: Adds notable events not available in the API.
+- **Responsive Design**: Ensures the application looks great on all devices.
+- **Keyword-based Prioritization**: Highlights events of historical significance.
 
-bash
-Copy code
-flask run
-Open your browser and visit:
-http://127.0.0.1:8000
+---
 
-Project Structure
-plaintext
-Copy code
-Chronica/
-├── static/
-│   ├── css/
-│   │   └── styles.css      # Custom CSS for styling
-│   ├── js/
-│   │   └── script.js       # JavaScript for interactivity
-│   └── images/
-│       └── banner.png      # Homepage banner image
-│
-├── templates/
-│   ├── index.html          # Homepage template
-│   ├── results.html        # Template for search results
-│   └── error.html          # Template for error messages
-│
-├── app.py                  # Flask application logic
-├── requirements.txt        # Python dependencies
-└── README.md               # Project documentation
-Acknowledgments
-This project was made possible thanks to the following tools and resources:
+## Installation
 
-Flask: For powering the server-side logic.
-Bootstrap: For ensuring responsive and modern design.
-History Today API: For providing a rich dataset of historical events.
-Requests Library: For seamless API interaction.
-Unsplash: For providing captivating images for banners and visuals.
-Contact
-For questions, suggestions, or issues, feel free to reach out:
+### Prerequisites
 
-Email: 002nasyagmail.com
+Ensure you have the following installed:
+
+- Python 3.6 or higher
+- pip (Python package installer)
+- Git (for version control)
+
+### Step 1: Clone the Repository
+
+Start by cloning the repository to your local machine:
+
+```bash
+git clone https://github.com/Miranics/chronica.git
