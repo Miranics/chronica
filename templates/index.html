@@ -18,7 +18,18 @@
     <main>
         <div class="hero">
             <img src="static/images/Fbg.png" alt="Historical Banner">
+            <div class="search-overlay">
+                <h2>Search Historical Events</h2>
+                <p class="fetching-writeup">
+                    Discover history like never before! Enter a date below and explore key events that shaped our world.
+                </p>
+                <form id="search-form">
+                    <input type="date" id="date" name="date" required>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
         </div>
+        
         <section class="about">
             <h2>Welcome to Chronica</h2>
             <p>
@@ -26,17 +37,11 @@
                 Chronica combines data from various sources to provide you with a curated list of historical highlights.
             </p>
         </section>
-        <section class="search">
-            <h2>Search for Events</h2>
-            <form id="search-form">
-                <input type="date" id="date" name="date" required>
-                <button type="submit">Search</button>
-            </form>
-        </section>
+        
         <section id="results">
             <h2>Results</h2>
             <ul id="events-list"></ul>
-        </section>
+        </section>        
     </main>
 
     <footer>

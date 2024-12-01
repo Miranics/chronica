@@ -1,74 +1,165 @@
-/* General Reset */
+/* ------------------------------
+   General Reset
+--------------------------------*/
+/* Resetting margin, padding, and box-sizing for consistency across browsers */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Fonts */
+/* ------------------------------
+   Fonts and Body Styling
+--------------------------------*/
+/* Applying font families and base styles */
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #fdf5e6;
+    background-color: #fdf5e6; /* Soft beige background for readability */
 }
 
-/* Header */
+/* ------------------------------
+   Header Section
+--------------------------------*/
+/* Styling the header with dark background and light text */
 header {
-    background-color: #4a403a;
-    color: #f9f4ef;
+    background-color: #4a403a; /* Deep brown */
+    color: #f9f4ef; /* Off-white */
     padding: 20px 0;
     text-align: center;
 }
+
 header h1 {
     font-family: 'Merriweather', serif;
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
+
 header p {
     font-size: 1.2rem;
     font-weight: 300;
 }
 
-/* Hero Image */
+/* ------------------------------
+   Hero Image Section
+--------------------------------*/
+/* Full-width hero image */
+.hero {
+    position: relative; /* Container for absolute positioning */
+    width: 100%;
+    height: auto;
+}
+
 .hero img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* About Section */
+/* Overlay for the search form */
+.search-overlay {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for accurate centering */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for emphasis */
+}
+
+.search-overlay h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Fetching write-up below the heading */
+.fetching-writeup {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+}
+
+/* Search form styling */
+.search-overlay form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-overlay input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 300px;
+}
+
+.search-overlay button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff; /* Blue button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-overlay button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* ------------------------------
+   About Section
+--------------------------------*/
+/* Centered text with padding */
 .about {
     padding: 40px 20px;
     text-align: center;
-    background-color: #fff;
+    background-color: #fff; /* White background */
 }
+
 .about h2 {
     font-family: 'Merriweather', serif;
     font-size: 2rem;
     margin-bottom: 20px;
     color: #4a403a;
 }
+
 .about p {
     max-width: 700px;
     margin: 0 auto;
 }
 
-/* Search Section */
+/* ------------------------------
+   Search Section
+--------------------------------*/
+/* Legacy search section (if used outside hero) */
 .search {
     padding: 40px 20px;
-    background-color: #f4ede5;
+    background-color: #f4ede5; /* Light beige */
     text-align: center;
 }
+
 .search h2 {
     font-family: 'Merriweather', serif;
     font-size: 2rem;
     margin-bottom: 20px;
     color: #4a403a;
 }
+
 .search form {
     display: inline-block;
 }
+
 .search input[type="date"] {
     padding: 10px;
     font-size: 1rem;
@@ -76,6 +167,7 @@ header p {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+
 .search button {
     padding: 10px 20px;
     font-size: 1rem;
@@ -85,36 +177,47 @@ header p {
     border-radius: 4px;
     cursor: pointer;
 }
+
 .search button:hover {
     background-color: #6b5f56;
 }
 
-/* Results Section */
+/* ------------------------------
+   Results Section
+--------------------------------*/
+/* Styling for search results */
 #results {
     padding: 40px 20px;
     background-color: #fff;
 }
+
 #results h2 {
     font-family: 'Merriweather', serif;
     font-size: 2rem;
     margin-bottom: 20px;
     color: #4a403a;
 }
+
 #events-list {
     list-style: none;
     max-width: 800px;
     margin: 0 auto;
     padding: 0;
 }
+
 #events-list li {
     padding: 15px;
     border-bottom: 1px solid #ddd;
 }
+
 #events-list li:last-child {
     border-bottom: none;
 }
 
-/* Footer */
+/* ------------------------------
+   Footer Section
+--------------------------------*/
+/* Footer with dark background */
 footer {
     background-color: #4a403a;
     color: #f9f4ef;
