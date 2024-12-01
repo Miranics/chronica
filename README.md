@@ -1,9 +1,9 @@
-    !/
+!#/
  Chronica
 Chronica is a web application that leverages external APIs to provide a valuable and meaningful service to users. This project involves both local implementation and deployment on web servers with load balancing for efficient and reliable accessibility.
 
-**Table of Contents
-Project Overview
+-- Table of Contents
+-- Project Overview
 Features
 Technologies Used
 APIs Used
@@ -117,7 +117,7 @@ Solution: Implemented caching to reduce API calls.
 Challenge: Server connection issues.
 Solution: Configured firewall rules and ensured consistent port usage.
 Credits
-External APIs: [List the APIs and their developers here]
+External APIs: History_today
 Third-Party Libraries: Flask, Requests, etc.
 Hosting and Load Balancing: Nginx, Ubuntu servers.
 License
