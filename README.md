@@ -19,9 +19,9 @@ Chronica is designed to address [insert the core problem your app solves]. The a
 
 ## The project is divided into:
 
-** Part 1: Local implementation of the application.
-Part 2: Deployment on web servers with load balancing.
-Features
+* Part 1: Local implementation of the application.
+- Part 2: Deployment on web servers with load balancing.
+## Features
 Data Fetching: Retrieves real-time data from external APIs.
 User Interaction: Enables users to [insert features like sorting, filtering, etc.].
 Scalable Deployment: Distributed across two web servers with a load balancer for reliability.
@@ -84,8 +84,7 @@ Copy code
 ssh ubuntu@98.80.10.162
 Update the Nginx configuration:
 nginx
-Copy code
-upstream flask_app {
+Copy codeupstream flask_app {
     server 54.165.255.68:5000;  # 6327-web-01
     server 54.237.192.135:5000;  # 6327-web-02
 }
@@ -102,6 +101,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
+
 Test and reload Nginx:
 bash
 Copy code
