@@ -1,227 +1,148 @@
-/* ------------------------------
-   General Reset
---------------------------------*/
-/* Resetting margin, padding, and box-sizing for consistency across browsers */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ------------------------------
-   Fonts and Body Styling
---------------------------------*/
-/* Applying font families and base styles */
+/* Base Font and Background Styling */
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #fdf5e6; /* Soft beige background for readability */
+    background-color: #fdf5e6;
 }
 
-/* ------------------------------
-   Header Section
---------------------------------*/
-/* Styling the header with dark background and light text */
+/* Header Section */
 header {
-    background-color: #4a403a; /* Deep brown */
-    color: #f9f4ef; /* Off-white */
-    padding: 20px 0;
-    text-align: center;
+    background-color: #4a403a; /* Dark brown background */
+    color: #f9f4ef; /* Light text color */
+    padding: 20px 0; /* Vertical padding */
+    text-align: center; /* Center-align text */
 }
-
 header h1 {
     font-family: 'Merriweather', serif;
     font-size: 2.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Space below header title */
 }
-
 header p {
     font-size: 1.2rem;
-    font-weight: 300;
+    font-weight: 300; /* Light font weight */
 }
 
-/* ------------------------------
-   Hero Image Section
---------------------------------*/
-/* Full-width hero image */
+/* Hero Section */
 .hero {
-    position: relative; /* Container for absolute positioning */
-    width: 100%;
-    height: auto;
+    position: relative; /* Enable absolute positioning for child elements */
+    text-align: center; /* Center text over the image */
+    color: #fff; /* White text color for overlay content */
 }
-
 .hero img {
-    width: 100%;
-    height: auto;
-    display: block;
+    width: 100%; /* Full-width responsive image */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent inline image spacing issues */
 }
 
-/* Overlay for the search form */
+/* Overlay Content on Hero Section */
+.content-overlay {
+    position: absolute; /* Position over the image */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width of the hero image */
+    height: 100%; /* Full height of the hero image */
+    display: flex; /* Enable flexbox for layout */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center align horizontally */
+    justify-content: center; /* Center align vertically */
+    background: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
+    color: #fff; /* White text color */
+    padding: 20px; /* Inner padding */
+    box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+/* About Section in Hero */
+.about {
+    margin-bottom: 30px; /* Space below the About section */
+    text-align: center; /* Center-align text */
+}
+.about h2 {
+    font-family: 'Merriweather', serif; /* Serif font for headings */
+    font-size: 2rem;
+    margin-bottom: 15px; /* Space below the heading */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for contrast */
+}
+.about p {
+    max-width: 700px; /* Limit the width for readability */
+    margin: 0 auto; /* Center the paragraph */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow */
+}
+
+/* Search Section Overlay in Hero */
 .search-overlay {
-    position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for accurate centering */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for emphasis */
+    text-align: center; /* Center-align text */
 }
-
 .search-overlay h2 {
     font-family: 'Merriweather', serif;
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: 2rem;
+    margin-bottom: 15px; /* Space below the heading */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for contrast */
 }
-
-/* Fetching write-up below the heading */
-.fetching-writeup {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    max-width: 400px;
-    margin: 0 auto 20px;
-    line-height: 1.5;
+.search-overlay p {
+    margin-bottom: 20px; /* Space below the fetching writeup */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for contrast */
 }
-
-/* Search form styling */
 .search-overlay form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: inline-block; /* Inline block for compact layout */
 }
-
 .search-overlay input[type="date"] {
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 4px;
-    width: 80%;
-    max-width: 300px;
+    padding: 10px; /* Inner padding */
+    font-size: 1rem; /* Adjust font size */
+    margin-right: 10px; /* Space between input and button */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 4px; /* Rounded corners */
 }
-
 .search-overlay button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff; /* Blue button */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 10px 20px; /* Inner padding */
+    font-size: 1rem; /* Font size for button */
+    color: #fff; /* White text color */
+    background-color: #4a403a; /* Dark brown background */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
 }
-
 .search-overlay button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #6b5f56; /* Slightly lighter brown on hover */
 }
 
-/* ------------------------------
-   About Section
---------------------------------*/
-/* Centered text with padding */
-.about {
-    padding: 40px 20px;
-    text-align: center;
+/* Results Section */
+#results {
+    padding: 40px 20px; /* Inner padding */
     background-color: #fff; /* White background */
 }
-
-.about h2 {
-    font-family: 'Merriweather', serif;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #4a403a;
-}
-
-.about p {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* ------------------------------
-   Search Section
---------------------------------*/
-/* Legacy search section (if used outside hero) */
-.search {
-    padding: 40px 20px;
-    background-color: #f4ede5; /* Light beige */
-    text-align: center;
-}
-
-.search h2 {
-    font-family: 'Merriweather', serif;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #4a403a;
-}
-
-.search form {
-    display: inline-block;
-}
-
-.search input[type="date"] {
-    padding: 10px;
-    font-size: 1rem;
-    margin-right: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.search button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #4a403a;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.search button:hover {
-    background-color: #6b5f56;
-}
-
-/* ------------------------------
-   Results Section
---------------------------------*/
-/* Styling for search results */
-#results {
-    padding: 40px 20px;
-    background-color: #fff;
-}
-
 #results h2 {
     font-family: 'Merriweather', serif;
     font-size: 2rem;
-    margin-bottom: 20px;
-    color: #4a403a;
+    margin-bottom: 20px; /* Space below the heading */
+    color: #4a403a; /* Dark brown text color */
 }
-
 #events-list {
-    list-style: none;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0;
+    list-style: none; /* Remove bullet points */
+    max-width: 800px; /* Limit list width */
+    margin: 0 auto; /* Center the list */
+    padding: 0; /* Remove padding */
 }
-
 #events-list li {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+    padding: 15px; /* Inner padding for each list item */
+    border-bottom: 1px solid #ddd; /* Light border between items */
 }
-
 #events-list li:last-child {
-    border-bottom: none;
+    border-bottom: none; /* Remove border from the last item */
 }
 
-/* ------------------------------
-   Footer Section
---------------------------------*/
-/* Footer with dark background */
+/* Footer Section */
 footer {
-    background-color: #4a403a;
-    color: #f9f4ef;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 0.9rem;
+    background-color: #4a403a; /* Dark brown background */
+    color: #f9f4ef; /* Light text color */
+    text-align: center; /* Center-align text */
+    padding: 10px 0; /* Vertical padding */
+    font-size: 0.9rem; /* Small font size */
 }
