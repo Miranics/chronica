@@ -33,8 +33,9 @@ header p {
 /* Hero Section */
 .hero {
     position: relative; /* Enable absolute positioning for child elements */
-    text-align: center; /* Center text over the image */
+    text-align: center; /* Center-align text over the image */
     color: #fff; /* White text color for overlay content */
+    margin-top: 0; /* Remove spacing from the top */
 }
 .hero img {
     width: 100%; /* Full-width responsive image */
@@ -45,14 +46,14 @@ header p {
 /* Overlay Content on Hero Section */
 .content-overlay {
     position: absolute; /* Position over the image */
-    top: 0;
-    left: 0;
+    top: 0; /* Align content to the top of the image */
+    left: 0; /* Align content to the left */
     width: 100%; /* Full width of the hero image */
     height: 100%; /* Full height of the hero image */
     display: flex; /* Enable flexbox for layout */
     flex-direction: column; /* Stack content vertically */
-    align-items: center; /* Center align horizontally */
-    justify-content: center; /* Center align vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: flex-start; /* Align content to the start of the image */
     background: rgba(0, 0, 0, 0.5); /* Transparent black overlay */
     color: #fff; /* White text color */
     padding: 20px; /* Inner padding */
@@ -61,56 +62,104 @@ header p {
 
 /* About Section in Hero */
 .about {
-    margin-bottom: 30px; /* Space below the About section */
+    margin-bottom: 20px; /* Space below the About section */
     text-align: center; /* Center-align text */
+    max-width: 800px; /* Limit width for readability */
 }
 .about h2 {
     font-family: 'Merriweather', serif; /* Serif font for headings */
-    font-size: 2rem;
-    margin-bottom: 15px; /* Space below the heading */
+    font-size: 1.4rem; /* Larger font size */
+    margin-bottom: 10px; /* Space below the heading */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for contrast */
 }
 .about p {
-    max-width: 700px; /* Limit the width for readability */
-    margin: 0 auto; /* Center the paragraph */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow */
+    font-size: 1.2rem; /* Adjust font size */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for contrast */
+    max-width: 700px; /* Limit width */
+    margin: 0 auto; /* Center the text */
 }
 
-/* Search Section Overlay in Hero */
+/* Search Section Overlay */
 .search-overlay {
+    margin-top: 70px; /* Increase space from the About section */
+    padding: 20px; /* Add padding for a cleaner look */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    border-radius: 8px; /* Smooth rounded corners */
+    display: inline-block; /* Keep the layout compact */
     text-align: center; /* Center-align text */
+    max-width: 600px; /* Restrict width for a clean layout */
 }
+
+/* Search Section Title */
 .search-overlay h2 {
-    font-family: 'Merriweather', serif;
-    font-size: 2rem;
+    font-family: 'Merriweather', serif; /* Serif font for professionalism */
+    font-size: 2rem; /* Large font size for the title */
+    color: #4a403a; /* Dark brown for text */
     margin-bottom: 15px; /* Space below the heading */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for contrast */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Add shadow for subtle emphasis */
 }
+
+/* Search Writeup (Fetching Data Text) */
 .search-overlay p {
-    margin-bottom: 20px; /* Space below the fetching writeup */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for contrast */
+    font-size: 1rem; /* Standard font size */
+    color: #6b5f56; /* Light brown for emphasis */
+    margin-bottom: 20px; /* Space below the writeup */
+    font-style: italic; /* Italics for a softer tone */
 }
+
+/* Search Form */
 .search-overlay form {
-    display: inline-block; /* Inline block for compact layout */
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Center the form items */
+    align-items: center; /* Align vertically */
+    gap: 10px; /* Add space between form elements */
 }
+
+/* Date Input Field */
 .search-overlay input[type="date"] {
-    padding: 10px; /* Inner padding */
-    font-size: 1rem; /* Adjust font size */
-    margin-right: 10px; /* Space between input and button */
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 4px; /* Rounded corners */
+    padding: 12px 15px; /* Larger padding for better usability */
+    font-size: 1rem; /* Standard font size */
+    border: 2px solid #ddd; /* Slightly thicker border for visibility */
+    border-radius: 6px; /* Rounded corners */
+    transition: border-color 0.3s; /* Smooth transition effect */
 }
+
+/* Date Input Hover and Focus Effects */
+.search-overlay input[type="date"]:hover,
+.search-overlay input[type="date"]:focus {
+    border-color: #4a403a; /* Darker border on hover/focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Submit Button */
 .search-overlay button {
-    padding: 10px 20px; /* Inner padding */
-    font-size: 1rem; /* Font size for button */
-    color: #fff; /* White text color */
+    padding: 12px 25px; /* Larger padding for better appearance */
+    font-size: 1rem; /* Standard font size */
+    color: #fff; /* White text */
     background-color: #4a403a; /* Dark brown background */
     border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners */
+    border-radius: 6px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth hover effect */
 }
+
+/* Submit Button Hover Effect */
 .search-overlay button:hover {
-    background-color: #6b5f56; /* Slightly lighter brown on hover */
+    background-color: #6b5f56; /* Lighter brown for hover state */
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .search-overlay {
+        margin-top: 30px; /* Adjust spacing for smaller screens */
+        padding: 15px; /* Reduce padding */
+        max-width: 90%; /* Make overlay more responsive */
+    }
+    .search-overlay form {
+        flex-direction: column; /* Stack form items vertically */
+        gap: 15px; /* Adjust spacing for stacked layout */
+    }
 }
 
 /* Results Section */
