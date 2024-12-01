@@ -18,6 +18,13 @@
     <main>
         <div class="hero">
             <img src="static/images/Fbg.png" alt="Historical Banner">
+            <section class="about">
+                <h2>Welcome to Chronica</h2>
+                <p>
+                    Discover the most significant events in history by selecting a specific date. 
+                    Chronica combines data from various sources to provide you with a curated list of historical highlights.
+                </p>
+            </section>
             <div class="search-overlay">
                 <h2>Search Historical Events</h2>
                 <p class="fetching-writeup">
@@ -30,13 +37,9 @@
             </div>
         </div>
         
-        <section class="about">
-            <h2>Welcome to Chronica</h2>
-            <p>
-                Discover the most significant events in history by selecting a specific date. 
-                Chronica combines data from various sources to provide you with a curated list of historical highlights.
-            </p>
-        </section>
+        <section id="loading">
+            <h2>Loading...</h2>
+            <p>Fetching historical events for the selected date. Please wait...</p>
         
         <section id="results">
             <h2>Results</h2>
