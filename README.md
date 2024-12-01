@@ -1,20 +1,20 @@
-!#/
- Chronica
+
+#Chronica
 Chronica is a web application that leverages external APIs to provide a valuable and meaningful service to users. This project involves both local implementation and deployment on web servers with load balancing for efficient and reliable accessibility.
 
 - Table of Contents
 - Project Overview
-Features
-Technologies Used
-APIs Used
-Setup and Installation
-Local Setup
-Deployment to Servers
-Challenges and Solutions
-Credits
-License
-Contact
-Project Overview
+- Features
+- Technologies Used
+- APIs Used
+- Setup and Installation
+- Local Setup
+- Deployment to Servers
+- Challenges and Solutions
+- Credits
+- License
+- Contact
+##Project Overview
 Chronica is designed to address [insert the core problem your app solves]. The application retrieves and presents data interactively, allowing users to [e.g., sort, filter, search]. By leveraging external APIs, it delivers meaningful insights and user-friendly functionality.
 
 The project is divided into:
