@@ -1,56 +1,73 @@
-# Chronica
+Chronica Chronica is a web application that leverages external APIs to
+provide a valuable and meaningful service to users. This project
+involves both local implementation and deployment on web servers with
+load balancing for efficient and reliable accessibility.
 
-Chronica is a web application designed to [explain the application's purpose and the specific user need it addresses]. Built with Flask, it leverages external APIs to deliver dynamic and interactive data to its users.
+Table of Contents Project Overview Features Technologies Used APIs Used
+Setup and Installation Local Setup Deployment to Servers Challenges and
+Solutions Credits License Contact Project Overview Chronica is designed
+to address \[insert the core problem your app solves\]. The application
+retrieves and presents data interactively, allowing users to \[e.g.,
+sort, filter, search\]. By leveraging external APIs, it delivers
+meaningful insights and user-friendly functionality.
 
----
+The project is divided into:
 
-## Table of Contents
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [External API Used](#external-api-used)
-- [Local Setup](#local-setup)
-- [Deployment Instructions](#deployment-instructions)
-- [Challenges and Solutions](#challenges-and-solutions)
-- [Bonus Features](#bonus-features)
-- [Acknowledgments](#acknowledgments)
-- [Author](#author)
+Part 1: Local implementation of the application. Part 2: Deployment on
+web servers with load balancing. Features Data Fetching: Retrieves
+real-time data from external APIs. User Interaction: Enables users to
+\[insert features like sorting, filtering, etc.\]. Scalable Deployment:
+Distributed across two web servers with a load balancer for reliability.
+Error Handling: Manages API errors and downtime gracefully. Technologies
+Used Frontend: HTML, CSS, JavaScript Backend: Flask (Python) Servers:
+Ubuntu 20.04 Load Balancer: Nginx Version Control: Git/GitHub APIs Used
+\[API Name 1\] Purpose: \[Brief explanation of what the API is used
+for\] Documentation: \[Insert a link to the official API documentation\]
+\[API Name 2\] Purpose: \[Brief explanation of what the API is used
+for\] Documentation: \[Insert a link to the official API documentation\]
+Setup and Installation Local Setup Clone the Repository:
 
----
+bash Copy code git clone https://github.com/Miranics/chronica.git cd
+chronica Install Dependencies: Ensure you have Python 3 installed. Then,
+install required packages:
 
-## Features
-Chronica provides:
-- **Interactive Data Access:** Users can sort, filter, and search through data fetched from external APIs.
-- **Secure API Integration:** Implements robust handling of API keys and secure storage.
-- **Real-Time Updates:** Displays live data, ensuring users receive accurate and up-to-date information.
-- **Responsive Design:** A user-friendly interface optimized for both desktop and mobile devices.
+bash Copy code pip install -r requirements.txt Run the Application:
 
----
+bash Copy code python app.py Access the application at
+http://127.0.0.1:8000.
 
-## Technologies Used
-Chronica utilizes:
-- **Backend:** Python (Flask framework)
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla or any JS library you used)
-- **Database:** [Specify the database, e.g., SQLite, PostgreSQL, etc.]
-- **Version Control:** Git and GitHub
-- **Deployment:** Nginx, Gunicorn, and a load balancer configuration on Ubuntu servers
+Deployment to Servers Prerequisites Ensure SSH access to the servers.
+Install necessary software: Python, Flask, and Nginx. Steps Deploy
+Application on Web Servers:
 
----
+Clone the repository on both web servers: bash Copy code git clone
+https://github.com/Miranics/chronica.git cd chronica pip install -r
+requirements.txt Start the Flask application: bash Copy code nohup
+python app.py & Configure Nginx Load Balancer:
 
-## External API Used
-Chronica integrates with the following API(s):
-- **API Name:** [API name]
-  - **Documentation:** [Link to the API's documentation]
-  - **Endpoints Used:** [List key endpoints used and their purpose]
+SSH into the load balancer server: bash Copy code ssh
+ubuntu@98.80.10.162 Update the Nginx configuration: nginx Copy code
+upstream flask_app { server 54.165.255.68:5000; \# 6327-web-01 server
+54.237.192.135:5000; \# 6327-web-02 }
 
-> **Note:** All API keys and sensitive information are stored in environment variables and not exposed in the public repository.
+server { listen 80; server_name 98.80.10.162;
 
----
+location / { proxy_pass http://flask_app; proxy_set_header Host \$host;
+proxy_set_header X-Real-IP \$remote_addr; proxy_set_header
+X-Forwarded-For \$proxy_add_x\_forwarded_for; proxy_set_header
+X-Forwarded-Proto \$scheme; } } Test and reload Nginx: bash Copy code
+sudo nginx -t sudo systemctl reload nginx Verify Deployment:
 
-## Local Setup
+Access the application at http://98.80.10.162. Test traffic balancing by
+stopping one web server and verifying the load balancer redirects
+traffic to the other. Challenges and Solutions Challenge: API rate
+limits during high traffic. Solution: Implemented caching to reduce API
+calls. Challenge: Server connection issues. Solution: Configured
+firewall rules and ensured consistent port usage. Credits External APIs:
+\[List the APIs and their developers here\] Third-Party Libraries:
+Flask, Requests, etc. Hosting and Load Balancing: Nginx, Ubuntu servers.
+License This project is licensed under the Eclipse Public License - v
+2.0.
 
-To run Chronica on your local machine:
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/Miranics/chronica.git
-   cd chronica
+Contact Developer: Nanen Miracle Mbanaade Email: 002nasya@gmail.com
+Repository: GitHub - Chronica
