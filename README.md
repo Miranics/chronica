@@ -15,7 +15,7 @@ Chronica is a web application that leverages external APIs to provide a valuable
 - License
 - Contact
 ## Project Overview
-Chronica is designed to address [insert the core problem your app solves]. The application retrieves and presents data interactively, allowing users to [e.g., sort, filter, search]. By leveraging external APIs, it delivers meaningful insights and user-friendly functionality.
+Chronica is designed to help users explore historical events by date . The application retrieves and presents data interactively, allowing users to sort, filter, search history. By leveraging external APIs, it delivers meaningful insights and user-friendly functionality.
 
 ## The project is divided into:
 
@@ -28,7 +28,11 @@ Chronica is designed to address [insert the core problem your app solves]. The a
 - Error Handling: Manages API errors and downtime gracefully.
 ## Technologies Used
 - Frontend: HTML, CSS, JavaScript
-- Backend: Flask (Python)
+- Backend: Flask (Python), Requests
+- Flask management: Systemd
+- APIs: History_today
+- Deployment: Nginx, Ubuntu
+- servers management: SSH
 - Servers: Ubuntu 20.04
 - Load Balancer: Nginx
 - Version Control: Git/GitHub
