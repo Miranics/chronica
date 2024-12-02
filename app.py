@@ -2,7 +2,9 @@ from flask import Flask, request, jsonify, render_template
 import requests
 
 app = Flask(__name__)
-
+@app.route('/')
+def home():
+    return render_template('index.html')
 @app.route('/search', methods=['GET'])
 def search():
     date = request.args.get('date')
