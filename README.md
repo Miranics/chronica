@@ -50,12 +50,11 @@ Run the Application:
 
 
      python app.py
-Access the application at http://127.0.0.1:8000.
 
 # Deployment to Servers
 ## Prerequisites
 - Ensure SSH access to the servers.
-- Install necessary software: Python, Flask, and Nginx.
+- Install necessary software: Python, Flask, gunicorn and Nginx.
 ## Steps
 Deploy Application on Web Servers:
 
@@ -71,17 +70,17 @@ Deploy Application on Web Servers:
 
 - SSH into the load balancer server:
 
-      ssh ubuntu@98.80.10.162
+      ssh ubuntu@#YOUR_IP
 - Update the Nginx configuration:
 
       upstream flask_app {
-          server 54.165.255.68:5000;  # 6327-web-01
-          server 54.237.192.135:5000;  # 6327-web-02
+          server #YOUR_IP:5000;  # -web-01
+          server #YOUR_IP :5000;  # -web-02
       }
 
           server {
                  listen 80;
-                 server_name 98.80.10.162;
+                 server_name #your LB IP;
 
       location / {
          proxy_pass http://flask_app;
