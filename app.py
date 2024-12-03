@@ -32,18 +32,8 @@ def search():
             for event in raw_events
             if event['year'] == year
         ]
-
-        # Add Apollo 11 special case only if not already present
-        apollo_event = {
-            'year': 1969,
-            'description': "Apollo 11 successfully lands on the Moon.",
-            'link': "https://en.wikipedia.org/wiki/Apollo_11"
-        }
-        if date == "1969-07-20" and apollo_event not in filtered_events:
-            filtered_events.append(apollo_event)
-
         # Sort and limit the events
-        keywords = ["moon", "Apollo", "discovery", "independence", "treaty", "revolution"]
+        keywords = ["moon", "space", "discovery", "independence", "treaty", "revolution"]
         sorted_events = sorted(
             filtered_events,
             key=lambda e: (
