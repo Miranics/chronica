@@ -52,7 +52,7 @@ def search():
             ),
             reverse=True
         )
-        limited_events = sorted_events[:5]
+        limited_events = sorted_events[:10]
 
         return jsonify({'date': date, 'events': limited_events}), 200
 
