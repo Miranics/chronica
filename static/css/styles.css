@@ -7,7 +7,7 @@
 
 /* Base Font and Background Styling */
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans=', sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #fdf5e6;
