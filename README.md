@@ -96,7 +96,7 @@ Deploy Application on Web Servers:
       suudo systemctl reload nginx
 - Verify Deployment:
 
-      Access the application at http://98.80.10.162.
+Access the application at http://98.80.10.162.
 - Test traffic balancing by stopping one web server and verifying the load balancer redirects traffic to the other.
 ## Challenges and Solutions
 - Challenge: API rate limits during high traffic.
