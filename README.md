@@ -98,7 +98,7 @@ Deploy Application on Web Servers:
 
 Access the application at http://98.80.10.162.
 - Test traffic balancing by stopping one web server and verifying the load balancer redirects traffic to the other.
-## Challenges and Solutions
+## Challenges and Solutions   
 - Challenge: API rate limits during high traffic.
 - Solution: Implemented caching to reduce API calls.
 - Challenge: Server connection issues.
