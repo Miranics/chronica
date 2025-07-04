@@ -9,7 +9,7 @@ Chronica is a web application that leverages external APIs to provide a valuable
 - APIs Used                                           
 - Setup and Installation    
 - Local Setup
-- Deployment to Servers             
+- Deployment to Servers                                                        
 - Challenges and Solutions
 - Credits
 - License
